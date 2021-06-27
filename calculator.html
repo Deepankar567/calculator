@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>calculator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+body{
+margin:0;
+padding:0;
+}
+#container{
+height:100vh;
+width:100vw;
+background:lightblue;
+}
+#ans{
+height:10vh;
+width:100vw;
+background:lightblue;
+overflow-x: scroll;
+white-space: nowrap;
+font-size:50px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+#input{
+height:10vh;
+width:100vw;
+background:#d4d3cf;
+overflow-x: auto;
+white-space: nowrap;
+font-size:50px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+#keys{
+height:80vh;
+width:100vw;
+background:#faf9f7;
+}
+table{
+height:100%;
+width:100%;
+background:#d0de76;
+}
+button{
+height:100%;
+width:100%;
+background:#b3c920;
+font-size:50px;
+border-radius:30px;
+border:solid 2px #c3d145;
+}
+button:hover{
+background:#73e065;
+}
+</style>
+</head>
+<body>
+<div id="container">
+<div id="ans">0</div>
+<div id="input"></div>
+<div id="keys">
+<table>
+<tr>
+<td><button id="one" onclick="one()">1</button></td>
+<td><button id="two" onclick="two()">2</button></td>
+<td><button id="three" onclick="three()">3</button></td>
+<td><button id="plus" onclick="plus()">+</button></td>
+</tr>
+<tr>
+<td><button id="four" onclick="four()">4</button></td>
+<td><button id="five" onclick="five()">5</button></td>
+<td><button id="six" onclick="six()">6</button></td>
+<td><button id="minus" onclick="minus()">-</button></td>
+</tr>
+<tr>
+<td><button id="seven" onclick="seven()">7</button></td>
+<td><button id="eight" onclick="eight()">8</button></td>
+<td><button id="nine" onclick="nine()">9</button></td>
+<td><button id="multi" onclick="multi()">×</button></td>
+</tr>
+<tr>
+<td><button id="dot" onclick="dot()">.</button></td>
+<td><button id="zero" onclick="zero()">0</button></td>
+<td><button id="equal" onclick="equal()">=</button></td>
+<td><button id="divide" onclick="divide()">÷</button></td>
+</tr>
+<tr>
+<td><button id="lpara" onclick="lpara()">(</button></td>
+<td><button id="rpara" onclick="rpara()">)</button></td>
+<td colspan="2"><button id="allclear" onclick="allclear()">AC</button></td>
+</tr>
+</table>
+</div>
+</div>
+<script type="text/javascript">
+function one(){
+document. getElementById("input").innerHTML+=1;
+}
+function two(){
+document. getElementById("input").innerHTML+=2;
+}
+function three(){
+document. getElementById("input").innerHTML+=3;
+}
+function four(){
+document. getElementById("input").innerHTML+=4;
+}
+function five(){
+document. getElementById("input").innerHTML+=5;
+}
+function six(){
+document. getElementById("input").innerHTML+=6;
+}
+function seven(){
+document. getElementById("input").innerHTML+=7;
+}
+function eight(){
+document. getElementById("input").innerHTML+=8;
+}
+function nine(){
+document. getElementById("input").innerHTML+=9;
+}
+function zero(){
+document. getElementById("input").innerHTML+=0;
+}
+function plus(){
+var data1=document. getElementById("input").innerHTML;
+var res1 = data1.slice(-1)
+console.log(res1);
+if(res1!=="+" && res1!=="÷" && res1!=="-" && res1!=="×"){
+document. getElementById("input").innerHTML+="+";
+}
+}
+function minus(){
+var data2=document. getElementById("input").innerHTML;
+var res2 = data2.slice(-1)
+console.log(res2);
+if(res2!=="-" && res2!=="÷" && res2!=="+" && res2!=="×"){
+document. getElementById("input").innerHTML+="-";
+}
+
+}
+function multi(){
+var data3=document. getElementById("input").innerHTML;
+var res3 = data3.slice(-1)
+console.log(res3);
+if(res3!=="×" && res3!=="÷" && res3!=="+" && res3!=="-"){
+document. getElementById("input").innerHTML+="×";
+}
+
+}
+function divide(){
+var data4=document. getElementById("input").innerHTML;
+var res4 = data4.slice(-1)
+console.log(res4);
+if(res4!=="÷" && res4!=="+" && res4!=="-" && res4!=="×"){
+document. getElementById("input").innerHTML+="÷";
+}
+
+}
+function dot(){
+document. getElementById("input").innerHTML+=".";
+}
+function leftp(){
+document. getElementById("input").innerHTML+="(";
+}
+function rightp(){
+document. getElementById("input").innerHTML+=")";
+}
+//
+function equal(){
+var data5=document. getElementById("input").innerHTML;
+var res5 = data5.slice(-1)
+console.log(res5);
+if(res5!=="÷" && res5!=="+" && res5!=="-" && res5!=="×"){
+var data=document. getElementById("input").innerHTML;
+var pdata=data.replace(/÷/g,"/");
+var p1data=pdata.replace(/×/g,"*");
+console.log(data);
+console.log(pdata);
+console.log(p1data);
+console.log(eval(p1data));
+document. getElementById("ans").innerHTML=eval(p1data);
+}
+if(res5=="÷" || res5=="+" || res5=="-" || res5=="×"){
+document. getElementById("ans").innerHTML="NaN";
+}
+}
+
+function allclear(){
+document. getElementById("input").innerHTML="";
+document. getElementById("ans").innerHTML="0";
+}
+</script>
+</body>
+</html>
